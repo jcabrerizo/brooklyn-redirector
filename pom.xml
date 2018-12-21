@@ -26,13 +26,18 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.apache.brooklyn</groupId>
+			<artifactId>brooklyn-rest-resources</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
@@ -44,6 +49,12 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -89,6 +100,8 @@
 					<instructions>
 						<Import-Package>
 							org.apache.brooklyn.ui.modularity.module.api,
+							com.google.gson,
+							org.apache.http.client,
 							org.eclipse.jetty.servlets,
 							javax.ws.rs,
 							javax.servlet,
@@ -101,6 +114,7 @@
 						<Export-Package>
 							org.apache.brooklyn.redirector.filter.*
 						</Export-Package>
+						<Service-Component>*</Service-Component>
 						<Web-ContextPath>/</Web-ContextPath>
 						<_wab>app</_wab>
 					</instructions>
